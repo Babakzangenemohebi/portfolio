@@ -16,6 +16,7 @@ export default function Navbar() {
 
   const navItems: NavItem[] = [
     { label: "خانه", id: "home" },
+    { label: "درباره من", id: "about" },
     { label: "نمونه‌کارها", id: "portfolio" },
     { label: "سوابق و مهارت‌ها", id: "experience" },
     { label: "تماس", id: "contact" },

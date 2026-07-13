@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import {
-  ChevronDown, Sparkles, Video, LayoutGrid, Brain, Settings2
+  ChevronDown, Sparkles, Video, LayoutGrid, Brain, Settings2,
+  ChevronLeft, ChevronRight, User, Layers, Cpu
 } from "lucide-react";
 import gsap from "gsap";
 
@@ -19,6 +20,38 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 export default function Home() {
   const [adminOpen, setAdminOpen] = useState(false);
   const [nameHovered, setNameHovered] = useState(false);
+  const [activeAboutSlide, setActiveAboutSlide] = useState(0);
+
+  const aboutSlides = [
+    {
+      title: "من کیستم؟ (خلاصه بیوگرافی)",
+      badge: "درباره من",
+      content: "من بابک زنگنه محبی، متخصص طراحی گرافیک و تدوین ویدیو با بیش از ۶ سال سابقه حرفه‌ای هستم. تخصص من پاسخ‌گویی به تمام نیازهای بصری کسب‌وکارهاست؛ از طراحی چاپی و محیطی (تابلوسازی و بروشور) تا تولید محتوای ویدیویی (تیزر و موشن‌گرافیک) برای شبکه‌های اجتماعی.",
+      icon: <User className="w-6 h-6 text-brand-orange" />,
+      detail: "+۶ سال سابقه فعالیت حرفه‌ای در آژانس‌های تبلیغاتی و چاپخانه‌ها"
+    },
+    {
+      title: "رویکرد کاری و ابزارها",
+      badge: "تخصص و روش‌ها",
+      content: "با بهره‌گیری از ابزارهای ادوبی و کورل، رویکردم ترکیب درک دقیق نیاز مشتری با استانداردهای روز برای خلق آثاری فراتر از انتظار است.",
+      icon: <Layers className="w-6 h-6 text-brand-teal" />,
+      detail: "Photoshop, Illustrator, Premiere, After Effects, CorelDraw"
+    },
+    {
+      title: "نقاط قوت و خلاقیت نوین",
+      badge: "نقاط قوت",
+      content: "تسلط به زبان انگلیسی، به‌کارگیری هوش مصنوعی در ایده‌پردازی و بهبود بافت‌ها، خلاقیت بالا، سرعت در اجرا و اشتیاق به یادگیری مداوم، مهم‌ترین نقاط قوت من در پیشبرد پروژه‌هاست.",
+      icon: <Cpu className="w-6 h-6 text-brand-orange" />,
+      detail: "تلفیق ابزارهای مولد هوش مصنوعی (AI) با دانش فنی طراحی"
+    }
+  ];
+
+  const nextAboutSlide = () => {
+    setActiveAboutSlide((prev) => (prev + 1) % aboutSlides.length);
+  };
+  const prevAboutSlide = () => {
+    setActiveAboutSlide((prev) => (prev - 1 + aboutSlides.length) % aboutSlides.length);
+  };
 
   // Central state managed by our database-backed hook
   const {
@@ -385,6 +418,89 @@ export default function Home() {
           >
             <span className="text-[10px] font-bold tracking-widest uppercase">اسکرول به پایین</span>
             <ChevronDown className="w-4 h-4 animate-bounce" />
+          </div>
+        </section>
+
+        {/* ──────────── ABOUT ME SLIDER ──────────── */}
+        <section id="about" className="relative w-full max-w-6xl mx-auto px-4 py-20 z-10">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-semibold mb-3">
+              <User className="w-3 h-3" />
+              درباره من
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-4">
+              من چه کسی هستم؟
+            </h2>
+            <p className="text-zinc-400 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
+              داستان حرفه‌ای، رویکرد کاری، ابزارهای تخصصی و نقاط قوت من در یک نگاه.
+            </p>
+          </div>
+
+          <div className="glass border border-zinc-800/80 p-8 md:p-10 rounded-3xl relative overflow-hidden flex flex-col md:flex-row gap-8 items-center max-w-4xl w-full mx-auto min-h-[300px] shadow-2xl">
+            {/* Slide decoration glows */}
+            <div className="absolute -top-24 -left-24 w-48 h-48 rounded-full bg-brand-orange/5 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -right-24 w-48 h-48 rounded-full bg-brand-teal/5 blur-3xl pointer-events-none" />
+
+            {/* Left side: Icon / Graphic (styled dynamically based on active slide) */}
+            <div className="w-20 h-20 md:w-28 md:h-28 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 shadow-lg relative group transition-all duration-500 scale-100 hover:scale-105">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-brand-orange/10 to-brand-teal/10 opacity-50 group-hover:opacity-100 transition-opacity" />
+              {aboutSlides[activeAboutSlide].icon}
+            </div>
+
+            {/* Right side: Text Content */}
+            <div className="flex-1 flex flex-col justify-between w-full h-full text-right">
+              <div className="animate-in fade-in slide-in-from-right-3 duration-500">
+                <span className="inline-block px-2.5 py-1 rounded bg-zinc-800 border border-zinc-700 text-brand-orange text-[10px] font-bold mb-3 uppercase tracking-wider">
+                  {aboutSlides[activeAboutSlide].badge}
+                </span>
+                <h3 className="text-xl md:text-2xl font-black text-white mb-3">
+                  {aboutSlides[activeAboutSlide].title}
+                </h3>
+                <p className="text-sm md:text-base text-zinc-300 leading-loose min-h-[100px]">
+                  {aboutSlides[activeAboutSlide].content}
+                </p>
+                <div className="mt-4 text-xs font-semibold text-zinc-500 border-t border-zinc-800/80 pt-4 flex items-center gap-1.5 justify-end">
+                  <span>{aboutSlides[activeAboutSlide].detail}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />
+                </div>
+              </div>
+
+              {/* Slider Controls */}
+              <div className="flex items-center justify-between mt-8 border-t border-zinc-850 pt-4">
+                {/* Prev / Next buttons */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={prevAboutSlide}
+                    className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-brand-teal/40 hover:bg-brand-teal/5 transition-all cursor-pointer"
+                    title="اسلاید قبلی"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={nextAboutSlide}
+                    className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-brand-orange/40 hover:bg-brand-orange/5 transition-all cursor-pointer"
+                    title="اسلاید بعدی"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Progress Indicators (Dots) */}
+                <div className="flex items-center gap-2">
+                  {aboutSlides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveAboutSlide(idx)}
+                      className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        activeAboutSlide === idx 
+                          ? "w-6 bg-brand-orange" 
+                          : "w-2.5 bg-zinc-700 hover:bg-zinc-500"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
