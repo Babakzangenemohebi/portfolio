@@ -404,7 +404,13 @@ export default function Home() {
 
               <div
                 ref={profileImageRef}
-                className="relative w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] md:w-[360px] md:h-[360px] rounded-3xl overflow-hidden border border-zinc-700/50 bg-black/40 shadow-2xl glass will-change-transform"
+                className="relative w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] md:w-[360px] md:h-[360px] rounded-3xl overflow-hidden border border-zinc-700/50 bg-black/40 shadow-2xl glass will-change-transform cursor-pointer"
+                onMouseEnter={() => {
+                  gsap.to(profileGlowRef.current, { opacity: 0.65, scale: 1.6, duration: 0.8, ease: "power2.out" });
+                }}
+                onMouseLeave={() => {
+                  gsap.to(profileGlowRef.current, { opacity: 0.2, scale: 1, duration: 1, ease: "power3.out" });
+                }}
               >
                 <img
                   src={`${basePath}/images/babak.jpg`}
