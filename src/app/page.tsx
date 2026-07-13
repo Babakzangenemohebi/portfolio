@@ -67,6 +67,7 @@ export default function Home() {
   const profileGlowRef   = useRef<HTMLDivElement>(null);
   const rafRef           = useRef<number>(0);
   const mousePos         = useRef({ x: 0, y: 0 });
+  const aboutContentRef = useRef<HTMLDivElement>(null);
 
   // ── Refs for name hover vector animation ──
   const pathRef = useRef<SVGPathElement>(null);
@@ -472,7 +473,7 @@ export default function Home() {
 
             {/* Right side: Text Content */}
             <div className="flex-1 flex flex-col justify-between w-full h-full text-right">
-              <div className="animate-in fade-in slide-in-from-right-3 duration-500">
+                <div ref={aboutContentRef}>
                 <span className="inline-block px-2.5 py-1 rounded bg-zinc-800 border border-zinc-700 text-brand-orange text-[10px] font-bold mb-3 uppercase tracking-wider">
                   {aboutSlides[activeAboutSlide].badge}
                 </span>
