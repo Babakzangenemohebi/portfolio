@@ -130,30 +130,31 @@ export default function ResumeTimeline({ timeline = [], resumeFileUrl = "/resume
         }
       );
 
-      // Float-pop when entering viewport center, settle back as scrolling continues
-      const floatTl = gsap.timeline({
+      // Scrub-based zoom: peaks at viewport center, returns as user scrolls past
+      gsap.timeline({
         scrollTrigger: {
           trigger: btn,
-          start: "center 60%",
-          end: "center 40%",
-          scrub: false,
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.timeline()
-              .to(btn, {
-                y: -80, scale: 1.25,
-                filter: "drop-shadow(0 0 32px rgba(0,173,181,1)) drop-shadow(0 0 80px rgba(0,173,181,0.6))",
-                duration: 0.6, ease: "back.out(1.8)"
-              })
-              .to(btn, {
-                y: 0, scale: 1,
-                filter: "drop-shadow(0 0 0px rgba(0,173,181,0))",
-                duration: 0.9, ease: "bounce.out",
-                delay: 1.8
-              });
-          }
+          // start when button center hits 65% from top → end when it reaches 35%
+          start: "center 65%",
+          end: "center 35%",
+          scrub: 1.2,
         }
-      });
+      })
+      .fromTo(btn,
+        { scale: 1, filter: "drop-shadow(0 0 0px rgba(0,173,181,0))" },
+        {
+          scale: 1.28,
+          filter: "drop-shadow(0 0 28px rgba(0,173,181,0.95)) drop-shadow(0 0 60px rgba(0,173,181,0.4))",
+          ease: "power1.inOut",
+        }, 0
+      )
+      .to(btn,
+        {
+          scale: 1,
+          filter: "drop-shadow(0 0 0px rgba(0,173,181,0))",
+          ease: "power1.inOut",
+        }, 1
+      );
     }
   }, [timeline]); // trigger animation when timeline mounts/updates
 
