@@ -121,12 +121,28 @@ export default function Home() {
         { scale: 0.5, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.5, delay: 0.3, ease: "back.out(1.5)" }
       );
+
+      // Light up the glow behind the profile photo
+      gsap.to(profileGlowRef.current, {
+        opacity: 0.65,
+        scale: 1.6,
+        duration: 0.8,
+        ease: "power2.out",
+      });
     } else {
       gsap.to(pathRef.current, { strokeDashoffset: 400, duration: 0.4 });
       gsap.to([handleLRef.current, handleRRef.current, handleDotLRef.current, handleDotRRef.current], { opacity: 0, duration: 0.3 });
       if (penRef.current) {
         gsap.to(penRef.current, { transform: "translate(50px, 80px)", duration: 0.4 });
       }
+
+      // Dim the glow back to resting state
+      gsap.to(profileGlowRef.current, {
+        opacity: 0.2,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
+      });
     }
   }, [nameHovered]);
 
