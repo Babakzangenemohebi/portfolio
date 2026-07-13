@@ -14,6 +14,8 @@ import ContactForm from "@/components/ContactForm";
 import AdminModal from "@/components/AdminModal";
 import { usePortfolioStore } from "@/hooks/usePortfolioStore";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function Home() {
   const [adminOpen, setAdminOpen] = useState(false);
   const [nameHovered, setNameHovered] = useState(false);
@@ -355,7 +357,7 @@ export default function Home() {
                 className="relative w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] md:w-[360px] md:h-[360px] rounded-3xl overflow-hidden border border-zinc-700/50 bg-black/40 shadow-2xl glass will-change-transform"
               >
                 <img
-                  src="/images/babak.jpg"
+                  src={`${basePath}/images/babak.jpg`}
                   alt="بابک زنگنه محبی"
                   className="w-full h-full object-cover select-none pointer-events-none"
                 />
