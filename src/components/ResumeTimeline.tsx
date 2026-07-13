@@ -152,10 +152,11 @@ export default function ResumeTimeline({ timeline = [], resumeFileUrl = "/resume
                 <div key={item.id} className="timeline-card relative group">
                   {/* Timeline Dot Indicator */}
                   <div 
-                    className="absolute -right-[49px] top-1.5 w-4 h-4 rounded-full bg-zinc-900 border-2 flex items-center justify-center group-hover:scale-125 transition-transform duration-350 z-10"
+                    className="absolute -right-[49px] top-1.5 w-4 h-4 rounded-full border-2 flex items-center justify-center group-hover:scale-125 transition-transform duration-350 z-10"
                     style={{ 
-                      borderColor: item.color,
-                      boxShadow: `0 0 10px ${item.color}80`
+                      borderColor: item.company.includes("شتاب") ? "#eab308" : item.color,
+                      background: item.company.includes("شتاب") ? "linear-gradient(135deg, #ef4444, #eab308)" : "#09090b",
+                      boxShadow: item.company.includes("شتاب") ? `0 0 10px rgba(239, 68, 68, 0.8)` : `0 0 10px ${item.color}80`
                     }}
                   />
 
@@ -163,10 +164,11 @@ export default function ResumeTimeline({ timeline = [], resumeFileUrl = "/resume
                   <div className="glass p-6 md:p-8 rounded-3xl glow-hover shadow-lg">
                     {/* Period Badge */}
                     <span 
-                      className="inline-block px-2.5 py-1 rounded-md bg-zinc-850 border text-[10px] md:text-xs font-semibold mb-3"
+                      className="inline-block px-2.5 py-1 rounded-md border text-[10px] md:text-xs font-semibold mb-3"
                       style={{ 
-                        color: item.color,
-                        borderColor: `${item.color}40`
+                        color: item.company.includes("شتاب") ? "#ef4444" : item.color,
+                        borderColor: item.company.includes("شتاب") ? "#eab30840" : `${item.color}40`,
+                        background: item.company.includes("شتاب") ? "linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(234, 179, 8, 0.15))" : "rgba(39, 39, 42, 0.5)"
                       }}
                     >
                       {item.period}
@@ -177,8 +179,10 @@ export default function ResumeTimeline({ timeline = [], resumeFileUrl = "/resume
                       {item.role}
                     </h4>
                     <p 
-                      className="text-xs md:text-sm font-semibold mb-4"
-                      style={{ color: item.color }}
+                      className={`text-xs md:text-sm font-semibold mb-4 ${
+                        item.company.includes("شتاب") ? "bg-gradient-to-l from-[#ef4444] to-[#eab308] bg-clip-text text-transparent font-bold" : ""
+                      }`}
+                      style={item.company.includes("شتاب") ? undefined : { color: item.color }}
                     >
                       {item.company}
                     </p>
