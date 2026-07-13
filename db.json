@@ -1,0 +1,725 @@
+{
+  "projects": [
+    {
+      "title": "کارت ویزیت",
+      "category": "business-card",
+      "categoryLabel": "کارت ویزیت",
+      "description": "طراحی کارت ویزیت",
+      "longDescription": "",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783339786641-photo_5967615389032189734_y.jpg",
+      "coverUrl": "/uploads/1783339793623-cover.jpg",
+      "client": "هنر پارسی",
+      "year": "1403",
+      "highlightColor": "#ff6b35",
+      "mediaGallery": [
+        {
+          "type": "image",
+          "url": "/uploads/1783339800814-photo_5967615389032189726_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339803295-photo_5967615389032189727_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339805185-photo_5967615389032189728_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339807172-photo_5967615389032189729_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339810439-photo_5967615389032189730_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339814834-photo_5967615389032189731_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339820284-photo_5967615389032189733_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339823787-photo_5967615389032189735_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339831174-photo_5967615389032189732_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339836794-photo_5967615389032189721_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339842184-photo_5967615389032189722_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339847058-photo_5967615389032189723_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339851552-photo_5967615389032189734_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339856175-photo_5967615389032189736_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339861422-photo_5967615389032189737_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339866059-photo_5967615389032189742_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339870945-photo_5967615389032189720_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339880285-photo_5967615389032189738_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339889608-photo_5967615389032189739_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339893837-photo_5967615389032189741_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339902812-photo_5967615389032189746_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339907556-photo_5969901320950975376_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339912424-photo_5967615389032189724_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339917238-photo_5967615389032189725_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339925927-photo_5967615389032189740_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339931685-photo_5967615389032189743_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339942695-photo_5969901320950975375_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339953654-photo_5967615389032189744_y.jpg"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783339962203"
+    },
+    {
+      "title": "تراکت",
+      "category": "flyer-invoice",
+      "categoryLabel": "تراکت، فاکتور و فرم",
+      "description": "طراحی تراکت",
+      "longDescription": "",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783339564135-photo_5974183222956460934_y.jpg",
+      "coverUrl": "/uploads/1783339567313-cover.jpg",
+      "client": "هنر پارسی",
+      "year": "1402",
+      "highlightColor": "#ff6b35",
+      "mediaGallery": [
+        {
+          "type": "image",
+          "url": "/uploads/1783339574014-photo_5974183222956460935_y.jpg"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783339575760"
+    },
+    {
+      "title": "منو کافه و رستوران",
+      "category": "menu",
+      "categoryLabel": "منو",
+      "description": "طراحی انواع منو",
+      "longDescription": "",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783339425846-photo_5974183222956460871_y.jpg",
+      "coverUrl": "/uploads/1783339432092-cover.jpg",
+      "client": "هنر پارسی",
+      "year": "1404",
+      "highlightColor": "#ff6b35",
+      "mediaGallery": [
+        {
+          "type": "image",
+          "url": "/uploads/1783339439832-photo_5974183222956460870_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339442580-photo_5974183222956460871_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339445045-photo_5974183222956460872_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339451889-photo_5972153120764660484_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339458988-photo_5972153120764660483_y.jpg"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783339460910"
+    },
+    {
+      "title": "لیبل کیک جانا",
+      "category": "label",
+      "categoryLabel": "لیبل",
+      "description": "لیبل محصول",
+      "longDescription": "",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783339308764-f5b987e2-5185-452d-beb7-b1c83c4ccb44.jpg",
+      "coverUrl": "/uploads/1783339311082-cover.jpg",
+      "client": "هنر پارسی",
+      "year": "1404",
+      "highlightColor": "#ec4899",
+      "mediaGallery": [
+        {
+          "type": "image",
+          "url": "/uploads/1783339320249-f5b987e2-5185-452d-beb7-b1c83c4ccb44.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783339323257-11c74144-9db4-4400-bf39-ad4ab95049e0.jpg"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783339340256"
+    },
+    {
+      "title": "موشن متامدلند",
+      "category": "motion",
+      "categoryLabel": "موشن",
+      "description": "موشن تبلیغات پروژه متامدلند",
+      "longDescription": "",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783339100233-meta.jpg",
+      "coverUrl": "/uploads/1783339107410-cover.jpg",
+      "client": "متامدلند",
+      "year": "1401",
+      "highlightColor": "#4ade80",
+      "mediaGallery": [
+        {
+          "type": "video",
+          "url": "/uploads/1783339117002-document_5978686822123838591.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783339121021-document_5978686822123838587.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783339125046-document_5978686822123838595.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783339127947-document_5978686822123838508.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783339130515-document_5978686822123838527.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783339136870-document_5978686822123838499.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783339140604-document_5978686822123838502.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783339144155-document_5978686822123838497.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783339148268-document_5978686822123838498.mp4"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783339155680"
+    },
+    {
+      "title": "موشن معرفی بنر",
+      "category": "ai",
+      "categoryLabel": "هوش مصنوعی",
+      "description": "اجرا با افتر افکت صدای هوش مصنوعی",
+      "longDescription": "",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783338809483-covb.jpg",
+      "coverUrl": "/uploads/1783338817041-cover.jpg",
+      "client": "هنر پارسی",
+      "year": "1403",
+      "highlightColor": "#ff6b35",
+      "mediaGallery": [
+        {
+          "type": "video",
+          "url": "/uploads/1783338827998-document_5978686822123838487__1_.mp4"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783338830152"
+    },
+    {
+      "title": "تکست موشن ",
+      "category": "motion",
+      "categoryLabel": "موشن",
+      "description": "موشن شده با افتر افکت و صدای هوشواره",
+      "longDescription": "",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783338518469-photo_5978686822583831470_y__1_.jpg",
+      "coverUrl": "/uploads/1783338524916-cover.jpg",
+      "client": "پرنده‌نگری ایران",
+      "year": "1403",
+      "highlightColor": "#ff6b35",
+      "mediaGallery": [
+        {
+          "type": "video",
+          "url": "/uploads/1783338531696-document_5976435022310153621__1_.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783338638408-document_5978686822123838481.mp4"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783338534244"
+    },
+    {
+      "title": "استوری متامدلند",
+      "category": "post-story",
+      "categoryLabel": "پست و استوری اینستاگرام",
+      "description": "استوری معرفی پزشکان در سامانه متامدلند",
+      "longDescription": "",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783338294800-photo_5978686822583831461_y.jpg",
+      "coverUrl": "/uploads/1783338352203-cover.jpg",
+      "client": "متامدلند",
+      "year": "1401",
+      "highlightColor": "#ff6b35",
+      "mediaGallery": [
+        {
+          "type": "image",
+          "url": "/uploads/1783338306132-photo_5978686822583831461_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338308180-photo_5978686822583831463_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338310651-photo_5978686822583831451_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338312949-photo_5978686822583831453_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338315917-photo_5978686822583831462_y.jpg"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783338318864"
+    },
+    {
+      "title": "استوری پرنده‌نگری اینستاگرام",
+      "category": "post-story",
+      "categoryLabel": "پست و استوری اینستاگرام",
+      "description": "استوری اینستاگرام ",
+      "longDescription": "",
+      "tags": [],
+      "tools": [
+        "فوتوشاپ"
+      ],
+      "mediaUrl": "/uploads/1783338081096-photo_5978686822583831473_y.jpg",
+      "coverUrl": "/uploads/1783338085683-cover.jpg",
+      "client": "پرنده‌نگری ایران",
+      "year": "1404",
+      "highlightColor": "#ff6b35",
+      "mediaGallery": [
+        {
+          "type": "image",
+          "url": "/uploads/1783338016786-photo_5978686822583831501_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338021299-photo_5978686822583831506_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338023315-photo_5978686822583831507_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338025482-photo_5978686822583831510_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338028885-photo_5978686822583831507_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338033158-photo_5978686822583831510_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338036388-photo_5978686822583831512_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338039499-photo_5978686822583831533_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338042542-photo_5978686822583831534_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338046753-photo_5978686822583831470_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338053098-photo_5978686822583831472_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338057804-photo_5978686822583831476_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783338063601-photo_5978686822583831467_y.jpg"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783338110690"
+    },
+    {
+      "title": "پست اینستاگرام افقی",
+      "category": "instagram",
+      "categoryLabel": "نمونه تدوین اینستاگرام",
+      "description": "تدوین ویدیو",
+      "longDescription": "",
+      "tags": [],
+      "tools": [
+        "پریمیر"
+      ],
+      "mediaUrl": "/uploads/1783337713342-crash.jpg",
+      "coverUrl": "/uploads/1783337720818-cover.jpg",
+      "client": "ایران موجو",
+      "year": "1400",
+      "highlightColor": "#ff6b35",
+      "mediaGallery": [
+        {
+          "type": "video",
+          "url": "/uploads/1783337766661-cr.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783337772164-cr1.mp4"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783337775811"
+    },
+    {
+      "title": "موشن یوتوب",
+      "category": "youtube",
+      "categoryLabel": "نمونه تدوین یوتوب",
+      "description": "متحرک سازی و موشن کردن صفحه‌ی روزنامه به صورت مستند",
+      "longDescription": "",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783337112064-1.jpg",
+      "coverUrl": "/uploads/1783337119794-cover.jpg",
+      "year": "1404",
+      "highlightColor": "#ff6b35",
+      "mediaGallery": [
+        {
+          "type": "video",
+          "url": "/uploads/1783337129579-document_5787454592975380214.mp4"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783337133244"
+    },
+    {
+      "title": "ویدیو پرومو متاورس",
+      "category": "youtube",
+      "categoryLabel": "نمونه تدوین یوتوب",
+      "description": "ادیت ویدیو یوتوب",
+      "longDescription": "",
+      "tags": [],
+      "tools": [
+        "پریمیر"
+      ],
+      "mediaUrl": "/uploads/1783336903824-Screenshot_2026-07-06_145113.jpg",
+      "coverUrl": "/uploads/1783336912770-cover.jpg",
+      "client": "شتاب",
+      "year": "1400",
+      "highlightColor": "#a855f7",
+      "mediaGallery": [
+        {
+          "type": "video",
+          "url": "/uploads/1783336776198-document_5976435022310153561.mp4"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783336917116"
+    },
+    {
+      "title": "بازسازی و قرار دادن تصویر شهدا در یک ستاپ خاص",
+      "category": "ai",
+      "categoryLabel": "هوش مصنوعی",
+      "description": "افزایش کیفیت تصاویر و قرار دادن در محیط خاص",
+      "longDescription": "درست کردن درجه ها و سر دوشی ها و اسامی انها به شکل باورپذیر و رئال چالشی بود که در نرم افزار فوتوشاپ اجرایی شد",
+      "tags": [],
+      "tools": [
+        "فوتوشاپ"
+      ],
+      "mediaUrl": "/uploads/1783335864256-Gemini_Generated_Image_6d6hbg6d6hbg6d6h.png",
+      "client": "هنر پارسی",
+      "year": "1405",
+      "highlightColor": "#ef4444",
+      "mediaGallery": [
+        {
+          "type": "image",
+          "url": "/uploads/1783336546443-200X120_ALIREZA_ALVANDI.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783336553546-__________.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783336558492-_______________.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783336562784-___________2.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783336571338-__________.jpg"
+        }
+      ],
+      "visible": true,
+      "featured": false,
+      "id": "project-1783335865756",
+      "coverUrl": "/uploads/1783336389214-cover.jpg"
+    },
+    {
+      "title": "تبدیل اسکچ به ویدیو توسط هوش مصنوعی",
+      "category": "ai",
+      "categoryLabel": "هوش مصنوعی",
+      "description": "تبدیل اسکچ نقاشی شده به ویدئو",
+      "longDescription": "پرامپت اولیه برای رنگی کردن و فلت کردن طرح، عکس سه بعدی و نهایتا ویدیو سه بعدی انیمشنی",
+      "tags": [],
+      "tools": [],
+      "mediaUrl": "/uploads/1783334830443-photo_5823212652895867634_y.jpg",
+      "client": "عابد صادقی",
+      "year": "1404",
+      "highlightColor": "#ff6b35",
+      "visible": true,
+      "featured": false,
+      "id": "project-1783334843899",
+      "mediaGallery": [
+        {
+          "type": "image",
+          "url": "/uploads/1783335489776-photo_5823212652895867632_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783335492495-photo_5823212652895867635_y.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1783335497320-photo_5823212652895867634_y.jpg"
+        },
+        {
+          "type": "video",
+          "url": "/uploads/1783335573939-document_5823212652435873840__1_.mp4"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-ai",
+      "label": "هوش مصنوعی",
+      "value": "ai",
+      "color": "#a855f7"
+    },
+    {
+      "id": "cat-youtube",
+      "label": "نمونه تدوین یوتوب",
+      "value": "youtube",
+      "color": "#ef4444"
+    },
+    {
+      "id": "cat-instagram",
+      "label": "نمونه تدوین اینستاگرام",
+      "value": "instagram",
+      "color": "#ec4899"
+    },
+    {
+      "id": "cat-label",
+      "label": "لیبل",
+      "value": "label",
+      "color": "#fbbf24"
+    },
+    {
+      "id": "cat-post-story",
+      "label": "پست و استوری اینستاگرام",
+      "value": "post-story",
+      "color": "#e11d48"
+    },
+    {
+      "id": "cat-motion",
+      "label": "موشن",
+      "value": "motion",
+      "color": "#38bdf8"
+    },
+    {
+      "id": "cat-flyer-invoice",
+      "label": "تراکت، فاکتور و فرم",
+      "value": "flyer-invoice",
+      "color": "#10b981"
+    },
+    {
+      "id": "cat-banner-sign",
+      "label": "بنر و تابلو",
+      "value": "banner-sign",
+      "color": "#f59e0b"
+    },
+    {
+      "id": "cat-menu",
+      "label": "منو",
+      "value": "menu",
+      "color": "#84cc16"
+    },
+    {
+      "id": "cat-business-card",
+      "label": "کارت ویزیت",
+      "value": "business-card",
+      "color": "#06b6d4"
+    },
+    {
+      "id": "cat-misc",
+      "label": "متفرقه",
+      "value": "misc",
+      "color": "#6b7280"
+    }
+  ],
+  "settings": {
+    "name": "بابک زنگنه محبی",
+    "title": "معمار بصری، تدوینگر و تولیدکننده محتوا",
+    "bio": "من زبان برندها را به «حرکت» و «تصویر» تبدیل می‌کنم.",
+    "email": "babakzangenemohebi@gmail.com",
+    "phone": "09010227355",
+    "instagram": "https://instagram.com/babakzangenemohebi",
+    "telegram": "https://t.me/B4BACK",
+    "workExperienceYears": "6+",
+    "resumeFileUrl": "/uploads/1783334168931-resume.pdf"
+  },
+  "timeline": [
+    {
+      "id": "time-1",
+      "company": "چاپ و تبلیغات هنر پارسی",
+      "role": "طراح گرافیک تخصصی چاپ و لارج فرمت",
+      "period": "۱۴۰۲ - ۱۴۰۵ (اکنون)",
+      "description": "طراحی فرم‌های چاپی، بیلبوردها و تابلوهای تبلیغاتی محیطی.",
+      "bulletPoints": [
+        "خلق هویت‌های بصری، لوگوها، کاتالوگ‌ها، بروشورها و کارت‌های ویزیت اختصاصی.",
+        "تخصص در بسته‌بندی‌های پیچیده صنعتی و خروجی‌های تفکیک رنگ چاپی عریض (CMYK).",
+        "طراحی تابلوی سردر شعب، لایت‌باکس‌ها و بنرهای محیطی متناسب با متریال ساخت."
+      ],
+      "color": "#a855f7"
+    },
+    {
+      "id": "time-2",
+      "company": "شرکت دوراپزشکی متامدلند (Metamedland)",
+      "role": "مسئول تولید محتوا و طراح کمپین",
+      "period": "۱۴۰۱ - ۱۴۰۲",
+      "description": "مدیریت و توسعه هویت محتوایی برند در حوزه دوراپزشکی و ارتقای تبلیغات سمینارها.",
+      "bulletPoints": [
+        "طراحی و مدیریت کمپین‌های تبلیغاتی دیجیتال و آموزشی برای مخاطبان تخصصی حوزه پزشکی.",
+        "تولید ساختارهای ویدیویی معرفی خدمات تله‌مدیسین و پرزنتیشن برای حضور در سمینارها و نمایشگاه‌ها.",
+        "توسعه ساختار محتوایی یکپارچه که موجب ارتقای نرخ جذب پزشکان به پلتفرم شد."
+      ],
+      "color": "#10b981"
+    },
+    {
+      "id": "time-3",
+      "company": "آژانس تولید محتوا آوین (AVIN)",
+      "role": "طراح گرافیک و تولیدکننده محتوای دیجیتال (دورکاری)",
+      "period": "۱۴۰۰ - ۱۴۰۱",
+      "description": "اجرای پروژه‌های گرافیکی متنوع به صورت آزادکار و فریلنس.",
+      "bulletPoints": [
+        "طراحی پست، استوری و جلوه‌های بصری متناظر برای شبکه‌های اجتماعی.",
+        "خلق وکتور آرت، لوگوهای مینیمال و بنرهای وب تعاملی.",
+        "همکاری در کمپین‌های مختلف دیجیتال مارکتینگ و تحویل سریع آثار گرافیکی."
+      ],
+      "color": "#38bdf8"
+    },
+    {
+      "id": "time-4",
+      "company": "آژانس تولید محتوا شتاب",
+      "role": "مسئول باکس تدوین و تولید محتوای ویدیویی",
+      "period": "۱۳۹۸ - ۱۴۰۰",
+      "description": "سرپرستی مراحل تدوین ویدیو، تولید جلوه‌های ویژه و هماهنگی با تیم فیلم‌برداری.",
+      "bulletPoints": [
+        "تدوین تیزرهای تبلیغاتی، سناریونویسی و ویدیوهای تایپوگرافی برای برندهای معتبر از جمله ایران موجو.",
+        "مدیریت ریتم تولید و گردش کار تدوین از پیش‌تولید تا ویرایش نهایی فیلم‌ها.",
+        "همکاری مستقیم با مدیر خلاقیت برای توسعه سناریوهای بصری و B-Roll های سینمایی."
+      ],
+      "color": "#ef4444"
+    }
+  ]
+}
