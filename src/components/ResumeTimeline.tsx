@@ -102,32 +102,59 @@ export default function ResumeTimeline({ timeline = [], resumeFileUrl = "/resume
       );
     });
 
-    // GSAP ScrollTrigger for the download button attention grabber
-    gsap.fromTo(
-      ".resume-download-btn",
-      { scale: 0.3, opacity: 0, rotation: -10 },
-      {
-        scale: 1,
-        opacity: 1,
-        rotation: 0,
-        duration: 1.2,
-        ease: "elastic.out(1.1, 0.6)",
-        scrollTrigger: {
-          trigger: ".resume-download-btn",
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        onComplete: () => {
-          // Trigger a quick attention-seeking double wobble
-          gsap.timeline()
-            .to(".resume-download-btn", { x: -10, duration: 0.08, ease: "sine.inOut" })
-            .to(".resume-download-btn", { x: 8, duration: 0.08, ease: "sine.inOut" })
-            .to(".resume-download-btn", { x: -6, duration: 0.08, ease: "sine.inOut" })
-            .to(".resume-download-btn", { x: 4, duration: 0.08, ease: "sine.inOut" })
-            .to(".resume-download-btn", { x: 0, duration: 0.08, ease: "sine.inOut" });
+    // ─── DOWNLOAD BUTTON: dramatic pop-float when scrolled to center ───
+    const btn = document.querySelector(".resume-download-btn");
+    if (btn) {
+      // Entry animation: elastic pop from scale 0
+      gsap.fromTo(
+        btn,
+        { scale: 0, opacity: 0, y: 30, rotation: -6 },
+        {
+          scale: 1, opacity: 1, y: 0, rotation: 0,
+          duration: 1.4,
+          ease: "elastic.out(1.1, 0.55)",
+          scrollTrigger: {
+            trigger: btn,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+          onComplete: () => {
+            // Post-entry wobble shake
+            gsap.timeline()
+              .to(btn, { x: -12, duration: 0.07 })
+              .to(btn, { x: 10, duration: 0.07 })
+              .to(btn, { x: -7, duration: 0.07 })
+              .to(btn, { x: 5, duration: 0.07 })
+              .to(btn, { x: 0, duration: 0.07 });
+          }
         }
-      }
-    );
+      );
+
+      // Float-pop when entering viewport center, settle back as scrolling continues
+      const floatTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: btn,
+          start: "center 60%",
+          end: "center 40%",
+          scrub: false,
+          toggleActions: "play none none reverse",
+          onEnter: () => {
+            gsap.timeline()
+              .to(btn, {
+                y: -80, scale: 1.25,
+                filter: "drop-shadow(0 0 32px rgba(0,173,181,1)) drop-shadow(0 0 80px rgba(0,173,181,0.6))",
+                duration: 0.6, ease: "back.out(1.8)"
+              })
+              .to(btn, {
+                y: 0, scale: 1,
+                filter: "drop-shadow(0 0 0px rgba(0,173,181,0))",
+                duration: 0.9, ease: "bounce.out",
+                delay: 1.8
+              });
+          }
+        }
+      });
+    }
   }, [timeline]); // trigger animation when timeline mounts/updates
 
   return (
@@ -146,59 +173,126 @@ export default function ResumeTimeline({ timeline = [], resumeFileUrl = "/resume
         </p>
 
         {/* PDF Resume Download Button */}
-        <div className="mt-8 flex flex-col items-center">
-          <a
-            href={resumeFileUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            download="Babak_Zangeneh_Resume.pdf"
-            className="resume-download-btn resume-download-btn-premium flex items-center gap-3 px-10 py-4.5 rounded-2xl bg-zinc-950 border-2 font-black text-sm text-zinc-100 hover:text-white transition-all shadow-2xl cursor-pointer group select-none hover:scale-105"
-          >
-            <Download className="w-5 h-5 text-brand-teal group-hover:animate-bounce transition-transform duration-300" />
-            دانلود فایل رزومه (PDF)
-          </a>
+        <div className="mt-10 flex flex-col items-center gap-4">
+
+          {/* Halo rings wrapper */}
+          <div className="relative flex justify-center items-center">
+            {/* Outer orbiting particle sparks */}
+            <span className="btn-spark btn-spark-1" />
+            <span className="btn-spark btn-spark-2" />
+            <span className="btn-spark btn-spark-3" />
+
+            {/* Pulse halo rings */}
+            <span className="btn-halo btn-halo-1" />
+            <span className="btn-halo btn-halo-2" />
+
+            <a
+              href={resumeFileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Babak_Zangeneh_Resume.pdf"
+              className="resume-download-btn resume-download-btn-premium relative z-10 flex items-center gap-3 px-12 py-5 rounded-2xl bg-zinc-950 border-2 font-black text-base text-zinc-100 hover:text-white transition-all cursor-pointer group select-none"
+            >
+              {/* Icon with animated arrow bounce */}
+              <span className="relative">
+                <Download className="w-6 h-6 text-brand-teal group-hover:translate-y-1 transition-transform duration-300" />
+              </span>
+              <span className="tracking-wide">دانلود فایل رزومه (PDF)</span>
+              <span className="text-brand-teal text-xs font-normal opacity-70 group-hover:opacity-100 transition-opacity">⬇ PDF</span>
+            </a>
+          </div>
 
           <style dangerouslySetInnerHTML={{ __html: `
+            /* ---- Shimmer sweep ---- */
             @keyframes shimmer-sweep {
-              0% { transform: translateX(-150%) skewX(-25deg); }
-              100% { transform: translateX(150%) skewX(-25deg); }
+              0%   { transform: translateX(-200%) skewX(-20deg); }
+              100% { transform: translateX(200%) skewX(-20deg); }
             }
+            /* ---- Neon breath ---- */
             @keyframes neon-breath {
-              0%, 100% { 
-                box-shadow: 0 0 5px rgba(0, 173, 181, 0.2), 0 0 15px rgba(0, 173, 181, 0.1); 
-                border-color: rgba(0, 173, 181, 0.3); 
+              0%, 100% {
+                box-shadow: 0 0 8px rgba(0,173,181,0.3), 0 0 20px rgba(0,173,181,0.12), 0 0 0px rgba(0,173,181,0) inset;
+                border-color: rgba(0,173,181,0.4);
               }
-              50% { 
-                box-shadow: 0 0 20px rgba(0, 173, 181, 0.7), 0 0 35px rgba(0, 173, 181, 0.3); 
-                border-color: rgba(0, 173, 181, 0.9); 
+              50% {
+                box-shadow: 0 0 28px rgba(0,173,181,0.9), 0 0 60px rgba(0,173,181,0.4), 0 0 10px rgba(0,173,181,0.12) inset;
+                border-color: rgba(0,173,181,1);
               }
             }
+            /* ---- Halo pulse ---- */
+            @keyframes halo-pulse {
+              0%   { transform: scale(1); opacity: 0.6; }
+              80%  { transform: scale(1.9); opacity: 0; }
+              100% { transform: scale(1.9); opacity: 0; }
+            }
+            /* ---- Spark orbit ---- */
+            @keyframes orbit1 {
+              0%   { transform: rotate(0deg)   translateX(80px) scale(1);   }
+              50%  { transform: rotate(180deg) translateX(80px) scale(1.6); }
+              100% { transform: rotate(360deg) translateX(80px) scale(1);   }
+            }
+            @keyframes orbit2 {
+              0%   { transform: rotate(120deg) translateX(75px) scale(1.2); }
+              50%  { transform: rotate(300deg) translateX(75px) scale(0.7); }
+              100% { transform: rotate(480deg) translateX(75px) scale(1.2); }
+            }
+            @keyframes orbit3 {
+              0%   { transform: rotate(240deg) translateX(85px) scale(0.8); }
+              50%  { transform: rotate(60deg)  translateX(85px) scale(1.4); }
+              100% { transform: rotate(480deg) translateX(85px) scale(0.8); }
+            }
+
+            /* Button core styles */
             .resume-download-btn-premium {
               position: relative;
               overflow: hidden;
-              animation: neon-breath 3s infinite ease-in-out;
+              animation: neon-breath 2.8s ease-in-out infinite;
             }
             .resume-download-btn-premium::after {
               content: '';
               position: absolute;
-              top: 0;
+              top: -20%;
               left: 0;
-              width: 200%;
-              height: 100%;
+              width: 60px;
+              height: 140%;
               background: linear-gradient(
                 to right,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.03) 30%,
-                rgba(255, 255, 255, 0.35) 50%,
-                rgba(255, 255, 255, 0.03) 70%,
-                rgba(255, 255, 255, 0) 100%
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.55) 50%,
+                rgba(255,255,255,0) 100%
               );
-              transform: translateX(-150%) skewX(-25deg);
-              animation: shimmer-sweep 4s infinite linear;
+              transform: translateX(-200%) skewX(-20deg);
+              animation: shimmer-sweep 3s ease-in-out infinite;
             }
+            .resume-download-btn-premium:hover { transform: scale(1.06); }
             .resume-download-btn-premium:hover::after {
-              animation: shimmer-sweep 1.2s infinite linear;
+              animation: shimmer-sweep 0.9s ease-in-out infinite;
             }
+
+            /* Halo rings */
+            .btn-halo {
+              position: absolute;
+              inset: -4px;
+              border-radius: 18px;
+              border: 2px solid rgba(0,173,181,0.5);
+              pointer-events: none;
+            }
+            .btn-halo-1 { animation: halo-pulse 2.4s ease-out infinite; }
+            .btn-halo-2 { animation: halo-pulse 2.4s ease-out infinite 1.2s; }
+
+            /* Sparks */
+            .btn-spark {
+              position: absolute;
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              background: #00adb5;
+              pointer-events: none;
+              transform-origin: center;
+            }
+            .btn-spark-1 { animation: orbit1 3.6s linear infinite; background: #00adb5; box-shadow: 0 0 8px #00adb5; }
+            .btn-spark-2 { animation: orbit2 4s   linear infinite; background: #ff6b35; box-shadow: 0 0 8px #ff6b35; }
+            .btn-spark-3 { animation: orbit3 5s   linear infinite; background: #a855f7; box-shadow: 0 0 8px #a855f7; }
           `}} />
         </div>
       </div>

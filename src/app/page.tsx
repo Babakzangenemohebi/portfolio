@@ -380,10 +380,41 @@ export default function Home() {
 
             {/* PROFILE IMAGE col (5 cols) — PARALLAX */}
             <div className="lg:col-span-5 flex justify-center items-center relative mt-6 lg:mt-0" style={{ perspective: "1000px" }}>
-              <div
-                ref={profileGlowRef}
-                className="absolute w-80 h-80 rounded-full bg-gradient-to-tr from-brand-orange to-brand-teal opacity-20 blur-3xl pointer-events-none"
-              />
+              {/* Breathe Glow Rings */}
+              <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+                {/* Core ambient glow */}
+                <div
+                  ref={profileGlowRef}
+                  className="absolute w-80 h-80 rounded-full bg-gradient-to-tr from-brand-orange to-brand-teal opacity-20 blur-3xl"
+                />
+                {/* Ring 1 – fast breathe */}
+                <div className="profile-breathe-ring absolute rounded-full border border-brand-teal/30"
+                  style={{ width: "120%", height: "120%", borderRadius: "36%", animation: "profileGlow1 3.5s ease-in-out infinite" }}
+                />
+                {/* Ring 2 – medium breathe, offset */}
+                <div className="profile-breathe-ring absolute rounded-full border border-brand-orange/20"
+                  style={{ width: "135%", height: "135%", borderRadius: "36%", animation: "profileGlow2 4.5s ease-in-out infinite 0.8s" }}
+                />
+                {/* Ring 3 – slow outer pulse */}
+                <div className="profile-breathe-ring absolute rounded-full"
+                  style={{ width: "150%", height: "150%", borderRadius: "36%", background: "radial-gradient(ellipse, rgba(0,173,181,0.06) 0%, transparent 70%)", animation: "profileGlow3 5.5s ease-in-out infinite 1.4s" }}
+                />
+              </div>
+
+              <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes profileGlow1 {
+                  0%, 100% { opacity: 0.35; transform: scale(1); box-shadow: 0 0 0px rgba(0,173,181,0); }
+                  50% { opacity: 1; transform: scale(1.04); box-shadow: 0 0 30px rgba(0,173,181,0.35), 0 0 60px rgba(0,173,181,0.12); }
+                }
+                @keyframes profileGlow2 {
+                  0%, 100% { opacity: 0.2; transform: scale(1); }
+                  50% { opacity: 0.7; transform: scale(1.06); box-shadow: 0 0 40px rgba(255,107,53,0.2); }
+                }
+                @keyframes profileGlow3 {
+                  0%, 100% { opacity: 0.3; transform: scale(0.98); }
+                  50% { opacity: 1; transform: scale(1.05); }
+                }
+              `}} />
 
               <div
                 ref={profileImageRef}
@@ -401,7 +432,7 @@ export default function Home() {
               {/* Small floating stat cards around photo */}
               <div className="absolute -bottom-3 -right-3 px-4 py-2.5 rounded-2xl glass border border-zinc-700/60 shadow-xl hidden sm:block">
                 <span className="block text-[9px] text-zinc-500 font-bold">سابقه کار</span>
-                <span className="font-black text-white text-base leading-none">{initialized ? settings.workExperienceYears : "۵+"}</span>
+                <span className="font-black text-white text-base leading-none">{initialized ? settings.workExperienceYears : "۶+"}</span>
               </div>
               <div className="absolute -top-3 -left-3 px-4 py-2.5 rounded-2xl glass border border-zinc-700/60 shadow-xl hidden sm:block">
                 <span className="block text-[9px] text-zinc-500 font-bold">پروژه‌ها</span>
