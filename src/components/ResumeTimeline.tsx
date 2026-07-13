@@ -101,6 +101,33 @@ export default function ResumeTimeline({ timeline = [], resumeFileUrl = "/resume
         }
       );
     });
+
+    // GSAP ScrollTrigger for the download button attention grabber
+    gsap.fromTo(
+      ".resume-download-btn",
+      { scale: 0.3, opacity: 0, rotation: -10 },
+      {
+        scale: 1,
+        opacity: 1,
+        rotation: 0,
+        duration: 1.2,
+        ease: "elastic.out(1.1, 0.6)",
+        scrollTrigger: {
+          trigger: ".resume-download-btn",
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+        onComplete: () => {
+          // Trigger a quick attention-seeking double wobble
+          gsap.timeline()
+            .to(".resume-download-btn", { x: -10, duration: 0.08, ease: "sine.inOut" })
+            .to(".resume-download-btn", { x: 8, duration: 0.08, ease: "sine.inOut" })
+            .to(".resume-download-btn", { x: -6, duration: 0.08, ease: "sine.inOut" })
+            .to(".resume-download-btn", { x: 4, duration: 0.08, ease: "sine.inOut" })
+            .to(".resume-download-btn", { x: 0, duration: 0.08, ease: "sine.inOut" });
+        }
+      }
+    );
   }, [timeline]); // trigger animation when timeline mounts/updates
 
   return (
@@ -119,17 +146,60 @@ export default function ResumeTimeline({ timeline = [], resumeFileUrl = "/resume
         </p>
 
         {/* PDF Resume Download Button */}
-        <div className="mt-6 flex justify-center">
+        <div className="mt-8 flex flex-col items-center">
           <a
             href={resumeFileUrl}
             target="_blank"
             rel="noopener noreferrer"
             download="Babak_Zangeneh_Resume.pdf"
-            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-brand-teal/50 hover:bg-brand-teal/5 transition-all text-xs font-bold shadow-md cursor-pointer group"
+            className="resume-download-btn resume-download-btn-premium flex items-center gap-3 px-10 py-4.5 rounded-2xl bg-zinc-950 border-2 font-black text-sm text-zinc-100 hover:text-white transition-all shadow-2xl cursor-pointer group select-none hover:scale-105"
           >
-            <Download className="w-4 h-4 text-brand-teal group-hover:scale-110 transition-transform" />
+            <Download className="w-5 h-5 text-brand-teal group-hover:animate-bounce transition-transform duration-300" />
             دانلود فایل رزومه (PDF)
           </a>
+
+          <style dangerouslySetInnerHTML={{ __html: `
+            @keyframes shimmer-sweep {
+              0% { transform: translateX(-150%) skewX(-25deg); }
+              100% { transform: translateX(150%) skewX(-25deg); }
+            }
+            @keyframes neon-breath {
+              0%, 100% { 
+                box-shadow: 0 0 5px rgba(0, 173, 181, 0.2), 0 0 15px rgba(0, 173, 181, 0.1); 
+                border-color: rgba(0, 173, 181, 0.3); 
+              }
+              50% { 
+                box-shadow: 0 0 20px rgba(0, 173, 181, 0.7), 0 0 35px rgba(0, 173, 181, 0.3); 
+                border-color: rgba(0, 173, 181, 0.9); 
+              }
+            }
+            .resume-download-btn-premium {
+              position: relative;
+              overflow: hidden;
+              animation: neon-breath 3s infinite ease-in-out;
+            }
+            .resume-download-btn-premium::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 200%;
+              height: 100%;
+              background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.03) 30%,
+                rgba(255, 255, 255, 0.35) 50%,
+                rgba(255, 255, 255, 0.03) 70%,
+                rgba(255, 255, 255, 0) 100%
+              );
+              transform: translateX(-150%) skewX(-25deg);
+              animation: shimmer-sweep 4s infinite linear;
+            }
+            .resume-download-btn-premium:hover::after {
+              animation: shimmer-sweep 1.2s infinite linear;
+            }
+          `}} />
         </div>
       </div>
 
