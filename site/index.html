@@ -25,9 +25,11 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="preload" as="image" href="images/babak.jpg" />
 <link rel="stylesheet" href="assets/styles.css" />
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<!-- async: a blocked/slow telegram.org must never delay first paint -->
+<script src="https://telegram.org/js/telegram-web-app.js" async></script>
 </head>
 <body>
+<a class="skip" href="#work">پرش به نمونه‌کارها</a>
 
 <!-- ambient background -->
 <div class="bg-stage" aria-hidden="true">
@@ -71,7 +73,7 @@
     <div class="hero-grid">
       <div class="hero-copy">
         <span class="eyebrow"><i class="pulse"></i> آماده‌ی پروژه‌های جدید · ۱۴۰۵</span>
-        <h1>طراحی که برند شما را<br /><span class="grad">دیده‌شدنی</span> می‌کند.</h1>
+        <h1>طراحی که برند شما را <br /><span class="grad">دیده‌شدنی</span> می‌کند.</h1>
         <p class="hero-sub">
           من <b>بابک زنگنه محبی</b> هستم؛ طراح گرافیک و تدوینگر ویدیو با بیش از ۶ سال تجربه‌ی حرفه‌ای.
           از اقلام چاپی و لارج‌فرمت تا موشن‌گرافیک و تولید محتوای مبتنی بر هوش مصنوعی —

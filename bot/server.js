@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
 
   if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/health")) {
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-    res.end('<!doctype html><meta charset="utf-8"><body style="font-family:system-ui;background:#06070a;color:#eef1f6;display:grid;place-items:center;height:100vh;margin:0"><div style="text-align:center"><h2>bot ok ✅</h2><a href="https://t.me/B4backPortfoliobot" style="color:#ff6b35">t.me/B4backPortfoliobot</a></div></body>');
+    res.end('<!doctype html><meta charset="utf-8"><body style="font-family:system-ui;background:#06070a;color:#eef1f6;display:grid;place-items:center;height:100vh;margin:0"><div style="text-align:center"><h2>bot ok ✅</h2><a href="https://t.me/B4backPortfoliobot" style="color:#22d3ee">t.me/B4backPortfoliobot</a></div></body>');
     return;
   }
 

@@ -11,14 +11,25 @@
   const FA = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
   const toFa = (v) => String(v).replace(/\d/g, (d) => FA[+d]);
 
-  /* ---------- Telegram ---------- */
-  const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
-  const isMiniApp = !!(tg && tg.initData !== undefined && tg.platform && tg.platform !== "unknown");
+  /* ---------- Telegram ----------
+     The SDK is loaded with `defer` on purpose: if telegram.org is slow or
+     blocked, the page must still paint instantly. We therefore wait for the
+     SDK asynchronously instead of depending on it at parse time. */
+  let tg = null;
+  let isMiniApp = false;
+
   const haptic = (style) => {
-    try { if (tg && tg.HapticFeedback && isMiniApp) tg.HapticFeedback.impactOccurred(style || "light"); } catch (e) {}
+    try {
+      if (isMiniApp && tg && tg.HapticFeedback) tg.HapticFeedback.impactOccurred(style || "light");
+    } catch (e) {}
   };
 
-  if (isMiniApp) {
+  function bootTelegram() {
+    const wa = window.Telegram && window.Telegram.WebApp;
+    if (!wa) return false;
+    tg = wa;
+    isMiniApp = !!(tg.initData !== undefined && tg.platform && tg.platform !== "unknown");
+    if (!isMiniApp) return true;
     document.body.classList.add("tg");
     try {
       tg.ready();
@@ -32,7 +43,13 @@
       }
       if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
     } catch (e) {}
+    return true;
   }
+
+  (function waitForTelegram(tries) {
+    if (bootTelegram()) return;
+    if ((tries || 0) < 25) setTimeout(() => waitForTelegram((tries || 0) + 1), 80);
+  })(0);
 
   /* ---------- Toast ---------- */
   let toastTimer;
@@ -106,7 +123,12 @@
       if (sec && sec.getBoundingClientRect().top <= 140) current = id;
     });
 
-    $$("#navLinks a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+    $$("#navLinks a").forEach((a) => {
+      const on = a.getAttribute("href") === "#" + current;
+      a.classList.toggle("active", on);
+      if (on) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
     $$(".tab").forEach((a) => a.classList.toggle("active", a.dataset.tab === current));
   }
 
@@ -163,7 +185,7 @@
       "هوش مصنوعی", "بنر و تابلو", "کارت ویزیت"
     ];
     const chunk = words.map((w) => `<span>${w}</span>`).join("");
-    track.innerHTML = chunk + chunk;
+    track.innerHTML = chunk + chunk + chunk;
   }
 
   /* ---------- Stats ---------- */
@@ -233,7 +255,7 @@
         const wide = i === 0 && state.filter === "all" ? " wide" : "";
         const n = mediaCount(p);
         return `
-        <article class="card${wide}" data-id="${p.id}" tabindex="0" role="button" aria-label="${p.title}">
+        <a class="card${wide}" data-id="${p.id}" href="#${p.id}" aria-haspopup="dialog" aria-label="${p.title}${p.categoryLabel ? " — " + p.categoryLabel : ""}">
           <img src="${p.cover}" alt="${p.title}" loading="${i < 3 ? "eager" : "lazy"}" decoding="async"
                onerror="this.style.display='none'" />
           <div class="veil"></div>
@@ -249,19 +271,16 @@
               <span>${toFa(n)} فایل</span>
             </div>
           </div>
-        </article>`;
+        </a>`;
       })
       .join("");
 
     const cards = $$(".card", grid);
     cards.forEach((c, i) => {
       c.style.transitionDelay = (i % 3) * 70 + "ms";
-      c.addEventListener("click", () => openProject(c.dataset.id));
-      c.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openProject(c.dataset.id);
-        }
+      c.addEventListener("click", (e) => {
+        e.preventDefault();
+        openProject(c.dataset.id);
       });
       revealIO.observe(c);
     });
@@ -352,6 +371,21 @@
   const lb = $("#lb");
   const lbStage = $("#lbStage");
   const lbThumbs = $("#lbThumbs");
+  const BG = ["main", ".nav", ".tabbar", ".footer"];
+  let lastFocus = null;
+
+  function setBackgroundInert(state) {
+    BG.forEach((sel) => {
+      const el = document.querySelector(sel);
+      if (el) el.inert = state;
+    });
+  }
+
+  function focusables() {
+    return Array.from(lb.querySelectorAll('button, [href], video, [tabindex]:not([tabindex="-1"])')).filter(
+      (el) => el.offsetParent !== null && !el.disabled
+    );
+  }
 
   function projectGallery(p) {
     const g = (p.gallery || []).filter((x) => x.url);
@@ -396,9 +430,13 @@
       })
     );
 
+    lastFocus = document.activeElement;
+    setBackgroundInert(true);
     lb.classList.add("open");
     document.body.classList.add("locked");
     renderSlide();
+    const closeBtn = $("#lbClose");
+    if (closeBtn) closeBtn.focus({ preventScroll: true });
 
     if (isMiniApp && tg.BackButton) {
       tg.BackButton.show();
@@ -450,7 +488,9 @@
   function closeLb() {
     lb.classList.remove("open");
     document.body.classList.remove("locked");
+    setBackgroundInert(false);
     lbStage.querySelectorAll("video").forEach((v) => v.pause());
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
     if (isMiniApp && tg.BackButton) {
       tg.BackButton.offClick(closeLb);
       tg.BackButton.hide();
@@ -469,6 +509,13 @@
       if (e.key === "Escape") closeLb();
       if (e.key === "ArrowLeft") step(1);
       if (e.key === "ArrowRight") step(-1);
+      if (e.key === "Tab") {
+        const f = focusables();
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
     });
 
     let sx = 0, sy = 0;
