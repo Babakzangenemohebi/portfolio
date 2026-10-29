@@ -5,7 +5,7 @@
      images       → cache-first
      videos/ranges → untouched (streamed from network)
 */
-const VERSION = "b4back-v3";
+const VERSION = "b4back-v4";
 const SHELL = [
   "./",
   "index.html",
@@ -15,6 +15,7 @@ const SHELL = [
   "assets/vendor/three.module.min.js",
   "assets/three-bg.js",
   "assets/favicon.svg",
+  "assets/fonts/Vazirmatn-var.woff2",
   "data.json",
   "manifest.webmanifest",
   "images/babak.jpg",
