@@ -38,6 +38,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -521,7 +522,7 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   gap: 34px;
   font-size: 13px;
   font-weight: 700;
-  color: var(--muted-2);
+  color: #b9c2d0;
   letter-spacing: 0.3px;
   white-space: nowrap;
 }
