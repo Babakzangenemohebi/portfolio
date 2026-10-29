@@ -210,17 +210,24 @@
     $$("[data-count]").forEach((b) => countIO.observe(b));
   }
 
-  /* ---------- Filters ---------- */
+  /* ---------- Category families ---------- */
+  const FAMILIES = [
+    { id: "print", label: "چاپ و هویت بصری", cats: ["business-card", "flyer-invoice", "menu", "label", "banner-sign", "misc"] },
+    { id: "motion", label: "موشن و ویدیو", cats: ["motion", "youtube", "instagram"] },
+    { id: "social", label: "شبکه‌های اجتماعی", cats: ["post-story"] },
+    { id: "ai", label: "هوش مصنوعی", cats: ["ai"] },
+  ];
+
+  /* ---------- Segmented control ---------- */
   function buildFilters() {
     const el = $("#filters");
     if (!el) return;
     const p = state.data.projects || [];
-    const cats = (state.data.categories || []).filter((c) => p.some((x) => x.category === c.value));
-    const total = p.length;
-    let html = `<button class="filter on" data-cat="all" role="tab">همه <em>${toFa(total)}</em></button>`;
-    cats.forEach((c) => {
-      const n = p.filter((x) => x.category === c.value).length;
-      html += `<button class="filter" data-cat="${c.value}" role="tab">${c.label} <em>${toFa(n)}</em></button>`;
+    state.fams = FAMILIES.map((f) => ({ ...f, items: p.filter((x) => f.cats.includes(x.category)) })).filter((f) => f.items.length);
+
+    let html = `<button class="filter on" data-cat="all" role="tab" aria-selected="true">همه <em>${toFa(p.length)}</em></button>`;
+    state.fams.forEach((f) => {
+      html += `<button class="filter" data-cat="${f.id}" role="tab" aria-selected="false">${f.label} <em>${toFa(f.items.length)}</em></button>`;
     });
     el.innerHTML = html;
 
@@ -228,9 +235,18 @@
       const btn = e.target.closest(".filter");
       if (!btn) return;
       state.filter = btn.dataset.cat;
-      $$(".filter", el).forEach((b) => b.classList.toggle("on", b === btn));
+      $$(".filter", el).forEach((b) => {
+        const on = b === btn;
+        b.classList.toggle("on", on);
+        b.setAttribute("aria-selected", on ? "true" : "false");
+      });
       haptic("soft");
       renderGrid();
+      const work = document.getElementById("work");
+      if (work) {
+        const top = work.getBoundingClientRect().top + window.scrollY - 96;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
     });
   }
 
@@ -239,23 +255,11 @@
     return (p.gallery || []).length;
   }
 
-  function renderGrid() {
-    const grid = $("#grid");
-    if (!grid) return;
-    const list = state.filter === "all" ? state.projects : state.projects.filter((p) => p.category === state.filter);
-
-    if (!list.length) {
-      grid.innerHTML = '<div class="empty">کاری در این دسته پیدا نشد.</div>';
-      return;
-    }
-
-    grid.innerHTML = list
-      .map((p, i) => {
-        const hasVideo = (p.gallery || []).some((g) => g.type === "video") || (p.media || "").match(/\.(mp4|webm)$/i);
-        const wide = i === 0 && state.filter === "all" ? " wide" : "";
-        const n = mediaCount(p);
-        return `
-        <a class="card${wide}" data-id="${p.id}" href="#${p.id}" aria-haspopup="dialog" aria-label="${p.title}${p.categoryLabel ? " — " + p.categoryLabel : ""}">
+  function cardHTML(p, i) {
+    const hasVideo = (p.gallery || []).some((g) => g.type === "video") || (p.media || "").match(/\.(mp4|webm)$/i);
+    const n = mediaCount(p);
+    return `
+        <a class="card" data-id="${p.id}" href="#${p.id}" aria-haspopup="dialog" aria-label="${p.title}${p.categoryLabel ? " — " + p.categoryLabel : ""}">
           <img src="${p.cover}" alt="${p.title}" loading="${i < 3 ? "eager" : "lazy"}" decoding="async"
                onerror="this.style.display='none'" />
           <div class="veil"></div>
@@ -272,12 +276,36 @@
             </div>
           </div>
         </a>`;
-      })
+  }
+
+  function renderGrid() {
+    const grid = $("#grid");
+    if (!grid) return;
+    const fams = state.filter === "all" ? state.fams : state.fams.filter((f) => f.id === state.filter);
+
+    if (!fams.length) {
+      grid.classList.remove("groups");
+      grid.innerHTML = '<div class="empty">کاری در این دسته پیدا نشد.</div>';
+      return;
+    }
+
+    grid.classList.add("groups");
+    grid.innerHTML = fams
+      .map(
+        (f) => `
+      <section class="group" aria-label="${f.label}">
+        <header class="group-head">
+          <h3 class="group-title">${f.label}</h3>
+          <span class="group-count">${toFa(f.items.length)}</span>
+          <span class="group-line"></span>
+        </header>
+        <div class="grid-inner">${f.items.map((p, i) => cardHTML(p, i)).join("")}</div>
+      </section>`
+      )
       .join("");
 
-    const cards = $$(".card", grid);
-    cards.forEach((c, i) => {
-      c.style.transitionDelay = (i % 3) * 70 + "ms";
+    $$(".card", grid).forEach((c, i) => {
+      c.style.transitionDelay = (i % 3) * 60 + "ms";
       c.addEventListener("click", (e) => {
         e.preventDefault();
         openProject(c.dataset.id);

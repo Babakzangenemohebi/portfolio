@@ -7,7 +7,7 @@
 <meta name="description" content="پورتفولیوی حرفه‌ای بابک زنگنه محبی؛ بیش از ۶ سال تجربه در طراحی گرافیک، اقلام چاپی و لارج‌فرمت، تدوین سینماتیک، موشن‌گرافیک و تولید محتوا با هوش مصنوعی." />
 <meta name="author" content="بابک زنگنه محبی" />
 <meta name="keywords" content="بابک زنگنه محبی, طراح گرافیک, تدوینگر ویدیو, موشن گرافیک, طراحی هویت بصری, تیزر تبلیغاتی, پورتفولیو گرافیک, کارت ویزیت, منو, لیبل" />
-<meta name="theme-color" content="#06070a" />
+<meta name="theme-color" content="#04060c" />
 <meta name="color-scheme" content="dark" />
 
 <meta property="og:type" content="website" />
@@ -33,10 +33,10 @@
 
 <!-- ambient background -->
 <div class="bg-stage" aria-hidden="true">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="grid-lines"></div>
+  <canvas id="bg3d"></canvas>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
   <div class="grain"></div>
 </div>
 
@@ -284,5 +284,6 @@
 <div class="toast" id="toast"></div>
 
 <script src="assets/app.js" defer></script>
+<script type="module" src="assets/three-bg.js"></script>
 </body>
 </html>

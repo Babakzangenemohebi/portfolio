@@ -5,13 +5,15 @@
      images       → cache-first
      videos/ranges → untouched (streamed from network)
 */
-const VERSION = "b4back-v2";
+const VERSION = "b4back-v3";
 const SHELL = [
   "./",
   "index.html",
   "404.html",
   "assets/styles.css",
   "assets/app.js",
+  "assets/vendor/three.module.min.js",
+  "assets/three-bg.js",
   "assets/favicon.svg",
   "data.json",
   "manifest.webmanifest",
