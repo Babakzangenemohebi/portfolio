@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Pages
+name: Deploy portfolio to GitHub Pages
 
 on:
   push:
@@ -20,28 +20,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: npm
-          
+
       - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Build with Next.js
-        run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: "/portfolio"
-          
+        uses: actions/configure-pages@v5
+
+      - name: Assemble static site
+        run: |
+          set -e
+          mkdir -p dist
+          # hand-written static app (no build step)
+          cp -r site/. dist/
+          # media library (photos, videos, resume pdf)
+          mkdir -p dist/uploads dist/images
+          if [ -d public/uploads ]; then cp -r public/uploads/. dist/uploads/; fi
+          if [ -d public/images ]; then cp -r public/images/. dist/images/; fi
+          # bypass Jekyll so every file/folder is served as-is
+          touch dist/.nojekyll
+          echo "--- dist ---"
+          du -sh dist
+          ls dist
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./dist
 
   deploy:
     environment:

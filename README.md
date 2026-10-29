@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# پورتفولیو — بابک زنگنه محبی
 
-## Getting Started
+سایت شخصی و **مینی‌اپ تلگرام** برای نمایش نمونه‌کارهای طراحی گرافیک، چاپ و لارج‌فرمت، موشن‌گرافیک و تدوین ویدیو.
 
-First, run the development server:
+- 🌐 نسخه‌ی زنده: <https://babakzangenemohebi.github.io/portfolio/>
+- 🤖 ربات تلگرام: [@B4backPortfoliobot](https://t.me/B4backPortfoliobot)
+- 🎨 استک: HTML + CSS + JavaScript خالص (بدون فریم‌ورک، بدون مرحله‌ی build) + GitHub Pages
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ساختار پروژه
+
+```
+site/                 ← کل اپلیکیشن (همین پوشه منتشر می‌شود)
+  index.html          ← صفحه‌ی اصلی (RTL، فارسی)
+  404.html            ← صفحه‌ی خطا
+  data.json           ← داده‌های سایت (خروجی خودکار db.json)
+  manifest.webmanifest
+  assets/
+    styles.css        ← دیزاین‌سیستم، لِی‌اوت و انیمیشن‌ها
+    app.js            ← رندر نمونه‌کارها، فیلترها، لایت‌باکس، تلگرام
+    favicon.svg
+db.json               ← منبع اصلی محتوا (پروژه‌ها، دسته‌ها، رزومه، اطلاعات تماس)
+scripts/build-data.mjs← تبدیل db.json به site/data.json
+public/uploads/       ← تصاویر، ویدیوها و PDF رزومه
+public/images/        ← پرتره
+legacy-next/          ← نسخه‌ی قبلی (Next.js) — فقط آرشیو، در انتشار استفاده نمی‌شود
+.github/workflows/    ← انتشار خودکار روی GitHub Pages
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ویرایش محتوا
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+همه‌ی محتوا در `db.json` است. بعد از هر تغییر:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+node scripts/build-data.mjs     # یا: npm run data
+```
 
-## Learn More
+سپس commit و push کنید؛ سایت به‌صورت خودکار در ۱–۲ دقیقه به‌روز می‌شود.
 
-To learn more about Next.js, take a look at the following resources:
+### افزودن پروژه‌ی جدید
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+یک آبجکت به آرایه‌ی `projects` اضافه کنید:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```json
+{
+  "id": "project-1700000000000",
+  "title": "نام پروژه",
+  "category": "motion",
+  "categoryLabel": "موشن",
+  "description": "توضیح کوتاه",
+  "longDescription": "توضیح کامل (اختیاری)",
+  "tools": ["After Effects"],
+  "client": "نام کارفرما",
+  "year": "1405",
+  "coverUrl": "/uploads/cover.jpg",
+  "mediaUrl": "/uploads/main.jpg",
+  "mediaGallery": [
+    { "type": "image", "url": "/uploads/1.jpg" },
+    { "type": "video", "url": "/uploads/clip.mp4" }
+  ],
+  "highlightColor": "#ff6b35",
+  "visible": true,
+  "featured": false
+}
+```
 
-## Deploy on Vercel
+فایل‌های رسانه را در `public/uploads/` بگذارید. مسیرها را با `/` شروع کنید؛ اسکریپت خودش آن‌ها را به مسیر نسبی تبدیل می‌کند.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## امکانات
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- طراحی تیره‌ی پریمیوم، کاملاً ریسپانسیو (موبایل / تبلت / دسکتاپ)
+- گالری نمونه‌کار با فیلتر دسته‌بندی و شمارش
+- لایت‌باکس با پشتیبانی تصویر و ویدیو، سوایپ، کلیدهای جهت‌دار و BackButton تلگرام
+- تایم‌لاین رزومه، شمارنده‌های متحرک، انیمیشن‌های اسکرول
+- نوار ناوبری پایین در موبایل (تجربه‌ی اپ‌مانند)
+- یکپارچگی کامل با Telegram Mini App: `expand`، رنگ هدر، Haptic Feedback، safe-area
+- PWA manifest + صفحه‌ی ۴۰۴ اختصاصی
+
+## انتشار
+
+هر push روی شاخه‌ی `main` باعث اجرای `.github/workflows/deploy.yml` می‌شود:
+`site/` + `public/uploads` + `public/images` در یک artifact مونتاژ و روی GitHub Pages منتشر می‌شوند.
+
+---
+
+© ۱۴۰۵ بابک زنگنه محبی

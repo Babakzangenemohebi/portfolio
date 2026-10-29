@@ -1,0 +1,17 @@
+{
+  "name": "بابک زنگنه محبی — پورتفولیو",
+  "short_name": "بابک ز.م",
+  "description": "طراح گرافیک، تدوینگر و معمار بصری",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#06070a",
+  "theme_color": "#06070a",
+  "icons": [
+    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "images/babak.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "maskable" }
+  ]
+}
