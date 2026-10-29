@@ -1,0 +1,43 @@
+name: Bot runtime (serverless)
+
+# The bot lives entirely inside this repository: GitHub's runners do the work,
+# there is no server, no webhook host and no third-party service to keep alive.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *" # every 10 minutes
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bot-runtime
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # remember the last processed update_id between runs
+      - name: Restore polling offset
+        uses: actions/cache@v4
+        with:
+          path: bot/.state
+          key: botstate-${{ github.run_id }}
+          restore-keys: |
+            botstate-
+
+      - name: Answer Telegram updates
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          MINIAPP_URL: https://babakzangenemohebi.github.io/portfolio/
+          POLL_MINUTES: "9"
+        run: node bot/poll.js

@@ -82,6 +82,40 @@ node scripts/build-data.mjs     # یا: npm run data
 هر push روی شاخه‌ی `main` باعث اجرای `.github/workflows/deploy.yml` می‌شود:
 `site/` + `public/uploads` + `public/images` در یک artifact مونتاژ و روی GitHub Pages منتشر می‌شوند.
 
+## ربات تلگرام — کاملاً سرورلس و مستقل
+
+هیچ سرور، هاست یا سرویس واسطی وجود ندارد. کل ربات داخل همین ریپو زندگی می‌کند:
+
+```
+bot/
+  handlers.js   ← منطق پیام‌ها (start / portfolio / about / resume / contact)
+  poll.js       ← رانتایم اصلی: long-polling تلگرام، بدون وبهوک
+  server.js     ← اختیاری: حالت وبهوک برای هاست شخصی
+.github/workflows/bot.yml  ← اجرای زمان‌بندی‌شده روی رانرهای گیت‌هاب
+```
+
+- هر ۱۰ دقیقه یک جاب گیت‌هاب‌اکشنز اجرا می‌شود و حدود ۹ دقیقه long-poll می‌کند؛
+  یعنی عملاً همیشه روشن است، بدون هیچ سروری.
+- توکن ربات در `Settings → Secrets and variables → Actions` با نام `BOT_TOKEN` نگهداری
+  می‌شود (در کد نیست، چون ریپو عمومی است).
+- آفست پیام‌ها بین اجراها با کش اکشنز ذخیره می‌شود تا پیامی دوبار پاسخ نگیرد.
+- اجرای دستی: تب Actions → «Bot runtime (serverless)» → Run workflow.
+
+### مینی‌اپ مستقل (PWA)
+
+`site/sw.js` یک سرویس‌ورکر است: پوسته‌ی اپ کش می‌شود، تصاویر cache-first و
+`data.json` شبکه‌اول. یعنی بعد از اولین باز شدن، مینی‌اپ حتی بدون اینترنت هم باز
+می‌شود و روی گوشی قابل نصب است.
+
+### تبدیل به «مینی‌اپ اصلی» ربات (BotFather)
+
+1. در تلگرام به [@BotFather](https://t.me/BotFather) پیام بدهید.
+2. `/mybots` → ربات → **Bot Settings** → **Configure Mini App** → **Enable Mini App**.
+3. آدرس `https://babakzangenemohebi.github.io/portfolio/` را بدهید.
+
+بعد از این کار `t.me/B4backPortfoliobot/app` مستقیماً مینی‌اپ را باز می‌کند و
+دکمه‌ی «Open App» روی پروفایل ربات ظاهر می‌شود.
+
 ---
 
 © ۱۴۰۵ بابک زنگنه محبی
