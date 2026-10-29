@@ -5,7 +5,7 @@
      images       → cache-first
      videos/ranges → untouched (streamed from network)
 */
-const VERSION = "b4back-v1";
+const VERSION = "b4back-v2";
 const SHELL = [
   "./",
   "index.html",
